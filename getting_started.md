@@ -40,29 +40,11 @@ brew install --cask visual-studio-code
 
 ---
 
-## 2. Create Project and Virtual Environment
-
-```bash
-mkdir ~/projects/my_ds_project
-cd ~/projects/my_ds_project
-python3 -m venv .venv
-source .venv/bin/activate
-pip install --upgrade pip
-```
-
-Install common data science libraries:
-
-```bash
-pip install numpy pandas matplotlib seaborn scikit-learn jupyterlab ipykernel
-```
-
----
-
-## 3. GitHub Setup
+## 2. GitHub Setup
 
 ### Create Repository on GitHub
 - Go to GitHub and create a new repository.  
-- **Do not** initialize with README or `.gitignore`.  
+- **Do not** initialize with `.gitignore`.  
 
 ### Initialize Git Locally
 
@@ -70,22 +52,15 @@ pip install numpy pandas matplotlib seaborn scikit-learn jupyterlab ipykernel
 git init
 git config --global user.name "Your Name"
 git config --global user.email "your_email@example.com"
-echo "# My Data Science Project" > README.md
-git add README.md
-git commit -m "Initial commit"
 ```
 
-### Connect to GitHub and Push
-
+### Clone repo
 ```bash
-git remote add origin https://github.com/your-username/your-repo.git
-git branch -M main
-git push -u origin main
+git clone https://github.com/owner/repo-name.git
+cd repo-name
 ```
 
----
-
-## 4. Configure `.gitignore`
+### Configure `.gitignore`
 
 Create a `.gitignore` file to avoid committing unnecessary files:
 
@@ -98,18 +73,23 @@ __pycache__/
 " > .gitignore
 ```
 
-Remove anything already tracked that should be ignored:
-
+### Push 
 ```bash
-git rm -r --cached .
-git add .
-git commit -m "Apply .gitignore rules"
+git add .gitignore
+git commit -m "Added gitignore"
 git push
 ```
 
----
+## 3. Create Virtual Environment and Dependencies
 
-## 5. Dependency Management with pip-tools
+```bash
+mkdir ~/projects/my_ds_project
+cd ~/projects/my_ds_project
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+```
+---
 
 Install `pip-tools` inside your virtual environment:
 
@@ -135,6 +115,12 @@ Compile all dependencies into a pinned `requirements.txt`:
 pip-compile requirements.in
 ```
 
+Load all requirements:
+```bash
+pip install -r requirements.txt
+```
+
+---
 Commit both files:
 
 ```bash
@@ -145,7 +131,7 @@ git push
 
 ---
 
-## 6. Setup Instructions in README
+## 5. Setup Instructions in README
 
 Update your `README.md` with instructions for others:
 
@@ -172,7 +158,7 @@ Update your `README.md` with instructions for others:
 4. Open the project in VS Code and use the built-in Jupyter extension to run notebooks.
 ---
 
-## 7. Configure VS Code
+## 6. Configure VS Code
 
 1. Open the project folder in VS Code.  
 2. Install extensions: **Python**, **Jupyter**, **Pylance**.  
