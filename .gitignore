@@ -1,9 +1,6 @@
-# Python
-__pycache__/
-*.py[cod]
-*.egg-info/
-
-# Virtual environments
 .venv/
-venv/
-ENV/
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+.DS_Store
+
